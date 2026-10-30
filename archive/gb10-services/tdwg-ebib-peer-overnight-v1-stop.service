@@ -1,0 +1,7 @@
+[Unit]
+Description=Stop only the bibliography overnight client before 07:00 BST
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/systemctl --user stop tdwg-ebib-peer-overnight-v1.service
+TimeoutStartSec=50

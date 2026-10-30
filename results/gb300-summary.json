@@ -1,0 +1,28 @@
+{
+  "schema": "gb300-published-aggregate-v1",
+  "source": "Saved cumulative GB300 run report; no specimen rows or model responses.",
+  "source_report_sha256": "801ced2a42934201527232c6e5bad9b0fb5ce8a16405f53050dc6f1aeebe726b",
+  "distinct_inputs": 4183811,
+  "represented_specimens": 9122868,
+  "production_specimens": 6420793,
+  "evaluation_specimens": 2702075,
+  "usable_evaluation_specimens": 2702072,
+  "specimen_weighted_median_reference_distance_km": 17.87083019310297,
+  "equal_input_median_reference_distance_km": 34.819097670581364,
+  "processing_windows": 6,
+  "active_window_seconds": 669601.3530418873,
+  "requests_per_active_hour": 22493.562074773476,
+  "timing_note": "Active-window wall time includes startup and recovery; pauses between windows are excluded. It is not GPU-active time.",
+  "comparison_note": "Distance measures agreement with existing reference coordinates, not independently verified geographic accuracy.",
+  "input_tokens": 23406426424,
+  "output_tokens": 682121745,
+  "total_tokens": 24088548169,
+  "source_dataset": {
+    "description": "GBIF-derived proxy for UK-publisher specimen collections",
+    "snapshot_date": "2026-07-01",
+    "parent_doi": "10.15468/dl.teccpa",
+    "citation_url": "https://gbif-open-data-eu-central-1.s3.eu-central-1.amazonaws.com/occurrence/2026-07-01/citation.txt",
+    "citation_sha256": "a808dac509beccc303c264f1e5e0fcb6a61d99242599c1056385e5925b410f91",
+    "selection": "Active GB publishing organizations, specimen basis types, and non-empty institution or collection codes; then locality/coordinate eligibility. This is a proxy, not an exact DiSSCo export."
+  }
+}

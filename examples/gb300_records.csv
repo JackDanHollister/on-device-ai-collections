@@ -1,0 +1,5 @@
+gbifid,locality,countrycode,stateprovince,decimallatitude,decimallongitude
+synthetic-1,Example Wood,GB,England,,
+synthetic-2,Example Wood,GB,England,51.5,-0.1
+synthetic-3,Another Example Site,GB,England,,
+synthetic-4,Third Example Site,GB,Scotland,56.0,-4.0

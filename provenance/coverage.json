@@ -1,0 +1,18 @@
+{
+  "schema": "collections-code-coverage-v1",
+  "included": [
+    "Country extraction and review code",
+    "Bibliography peer matching and title proposal code",
+    "PlaceBot locality georeferencing runtime and prompts",
+    "GB300 source preparation, parallel inference, supervision, monitoring and reporting code",
+    "Artificial input examples and offline tests",
+    "GBIF source citation and code provenance",
+    "Saved GB300 aggregate counts and timing"
+  ],
+  "not_distributed": [
+    "Museum source exports and individual model responses",
+    "Protected evaluation references",
+    "Model weights and private serving configuration"
+  ],
+  "source_integrity_manifest": "provenance/source-files.json"
+}

@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "on-device-ai-collections"
+version = "0.1.0"
+description = "Local language-model experiments for collections data"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "MIT"}
+authors = [{name = "Jack D. Hollister"}, {name = "Steen Dupont"}]
+dependencies = ["requests>=2.25,<3", "python-dotenv>=1,<2", "duckdb>=1,<2", "jsonschema>=4,<5"]
+
+[project.optional-dependencies]
+test = ["pytest>=7,<10", "jsonschema>=4,<5"]
+
+[project.scripts]
+collections-ai = "collections_ai.cli:main"
+
+[project.urls]
+Repository = "https://github.com/JackDanHollister/on-device-ai-collections"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+collections_ai = ["data/*.jsonl"]
+placebot = ["data/*.md", "LICENSE"]
+
+[tool.setuptools.data-files]
+"share/on-device-ai-collections/scripts/gb300" = ["scripts/gb300/*.py"]
+"share/on-device-ai-collections/scripts/gb10" = ["scripts/gb10/*.py"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

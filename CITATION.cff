@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+type: software
+title: "Local AI for collections data"
+version: 0.1.0
+doi: "10.5281/zenodo.23824413"
+license: MIT
+message: "Please cite this software when using the experiment code."
+authors:
+  - family-names: Hollister
+    given-names: Jack D.
+    affiliation: "Natural History Museum, London, United Kingdom"
+  - family-names: Dupont
+    given-names: Steen
+    affiliation: "Natural History Museum, London, United Kingdom"
+repository-code: "https://github.com/JackDanHollister/on-device-ai-collections"
+keywords:
+  - museum informatics
+  - georeferencing
+  - local inference
+  - collections data

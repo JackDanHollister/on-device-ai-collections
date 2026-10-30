@@ -1,0 +1,683 @@
+{
+  "schema": "collections-ai-source-snapshot-v1",
+  "copied_at": "2026-10-12",
+  "placebot_hpc_commit": "d9328aeb86ece4a5c74cf111d30c4d6976a67987",
+  "source_files": [
+    {
+      "path": "scripts/gb10/local_span_pilot.py",
+      "origin": "tdwg-gb10-data-transformer/scripts/local_span_pilot.py",
+      "sha256": "337ca3e1d17d88d19884247bb80d8fec9a23a7dc5ccf9231e8a18f916ddf9202",
+      "bytes": 16878,
+      "original_sha256": "64699260c3381bb0f63a5af605cc7f867aa8e6db278b6dd6e161923e0deb3e16",
+      "publication_change": "Replaced workstation paths, network addresses and account-specific defaults with portable paths or configuration."
+    },
+    {
+      "path": "scripts/gb10/run_local_span_pilots.py",
+      "origin": "tdwg-gb10-data-transformer/scripts/run_local_span_pilots.py",
+      "sha256": "a65a790491eef2e4a8b4935423ac23ed93cf3aae3507071376892538a2c5eac7",
+      "bytes": 17032
+    },
+    {
+      "path": "scripts/gb10/run_esites_review_comparison.py",
+      "origin": "tdwg-gb10-data-transformer/scripts/run_esites_review_comparison.py",
+      "sha256": "67c815b66d318e73632f51ea754d58da12f2489929955737ee07a008ac865859",
+      "bytes": 28029
+    },
+    {
+      "path": "scripts/gb10/run_esites_country_24h.py",
+      "origin": "tdwg-gb10-data-transformer/scripts/run_esites_country_24h.py",
+      "sha256": "60b5228e785ee3e1416b952e04219290d797ebabcfb14f7c3556909a6f4db3e3",
+      "bytes": 44316
+    },
+    {
+      "path": "scripts/gb10/hold_esites_country_24h_v2_lock.py",
+      "origin": "tdwg-gb10-data-transformer/scripts/hold_esites_country_24h_v2_lock.py",
+      "sha256": "ca3f3df5933b2c7ee2414c1e6468789e71aec589e408aec8533f665b5f24cee1",
+      "bytes": 5154,
+      "original_sha256": "865a362cbce6a13939e5b571cecaec59995dc4b3d0302b4b8feca5fd8b505eea",
+      "publication_change": "Replaced workstation paths, network addresses and account-specific defaults with portable paths or configuration."
+    },
+    {
+      "path": "scripts/gb10/ebib_peer_overnight.py",
+      "origin": "tdwg-gb10-data-transformer/scripts/ebib_peer_overnight.py",
+      "sha256": "cd56932ceea721066d58584825c6aeef7a734c9d61b83c5e1f2fec2faaa7209c",
+      "bytes": 32665
+    },
+    {
+      "path": "scripts/gb10/run_ebib_peer_overnight.py",
+      "origin": "tdwg-gb10-data-transformer/scripts/run_ebib_peer_overnight.py",
+      "sha256": "e4caae37d9f0cc620af0910de9b16105e794e045be020f5cf6361a5ef9910455",
+      "bytes": 25873
+    },
+    {
+      "path": "scripts/gb10/hold_ebib_peer_overnight_lock.py",
+      "origin": "tdwg-gb10-data-transformer/scripts/hold_ebib_peer_overnight_lock.py",
+      "sha256": "4fd4dc13ab7b04b30f84fec5b087cfaf17a969b8af0f0009abe3e39a1ed104db",
+      "bytes": 6608,
+      "original_sha256": "d56470b5c01f7aad557a6e687725618a3de8ff0bf7d92a788a898c65114d97b0",
+      "publication_change": "Replaced workstation paths, network addresses and account-specific defaults with portable paths or configuration."
+    },
+    {
+      "path": "scripts/gb10/profile_gdc_bundles.py",
+      "origin": "tdwg-gb10-data-transformer/scripts/profile_gdc_bundles.py",
+      "sha256": "87a6a331aa596c350fe080d844742dc677bc8e953a91d6f0b6ad5e6769e2cfdd",
+      "bytes": 15695
+    },
+    {
+      "path": "tests/gb10/test_local_span_pilot.py",
+      "origin": "tdwg-gb10-data-transformer/tests/test_local_span_pilot.py",
+      "sha256": "3296b0fc58ebc303122239207f3c79df1f3423d70a5993cb584b47be0605550e",
+      "bytes": 10762,
+      "original_sha256": "9880535d4ec5d8e334e8067658857cb3ef46b47fe24be492bdf58b54efce4d54",
+      "publication_change": "Adjusted test import paths for the repository layout."
+    },
+    {
+      "path": "tests/gb10/test_esites_country_24h.py",
+      "origin": "tdwg-gb10-data-transformer/tests/test_esites_country_24h.py",
+      "sha256": "77b42bb4bbf1fcc4d161858d270875221cc88777ab9e56bf008f8bda531b31be",
+      "bytes": 17262,
+      "original_sha256": "f8ba71d047f5f85230f685be9c66ce87663ff3078c1c9ab457fa90fa02f21fd9",
+      "publication_change": "Adjusted test import paths for the repository layout."
+    },
+    {
+      "path": "tests/gb10/test_ebib_peer_overnight.py",
+      "origin": "tdwg-gb10-data-transformer/tests/test_ebib_peer_overnight.py",
+      "sha256": "0a730f646e5e62fdbb3932392a36441fe413241ae67b2ff26534ddf674c64d8a",
+      "bytes": 16044,
+      "original_sha256": "3b9f12e9b251b70589881a743d20ab475bdcf2c0741375cdaed794da20521543",
+      "publication_change": "Updated test imports and archived timer paths for the repository layout."
+    },
+    {
+      "path": "src/placebot/__init__.py",
+      "origin": "PlaceBot-HPC@d9328aeb86ece4a5c74cf111d30c4d6976a67987:placebot/__init__.py",
+      "sha256": "edeeb974a15e3f8418b4e3385b1776976fb31e25ace5c609367f956606369974",
+      "bytes": 1558
+    },
+    {
+      "path": "src/placebot/models/gemini_3_1_pro.py",
+      "origin": "PlaceBot-HPC@d9328aeb86ece4a5c74cf111d30c4d6976a67987:placebot/models/gemini_3_1_pro.py",
+      "sha256": "3d94266bdb0abe28b2a38cb5ac43f14c028014920aab35e12ba6261dd829cbd3",
+      "bytes": 3547
+    },
+    {
+      "path": "src/placebot/models/openrouter_claude_sonnet_4_6.py",
+      "origin": "PlaceBot-HPC@d9328aeb86ece4a5c74cf111d30c4d6976a67987:placebot/models/openrouter_claude_sonnet_4_6.py",
+      "sha256": "f4614927bc78d8a3815c41f642a93e8892596bf87acadf66a132f335ce7c5739",
+      "bytes": 815
+    },
+    {
+      "path": "src/placebot/models/openai_compatible_local.py",
+      "origin": "PlaceBot-HPC@d9328aeb86ece4a5c74cf111d30c4d6976a67987:placebot/models/openai_compatible_local.py",
+      "sha256": "5bd2aaa38c49d1392d53f8e99934200c936185a2c9166fff3bfda4ea570d7eed",
+      "bytes": 8095
+    },
+    {
+      "path": "src/placebot/models/gpt_4_1.py",
+      "origin": "PlaceBot-HPC@d9328aeb86ece4a5c74cf111d30c4d6976a67987:placebot/models/gpt_4_1.py",
+      "sha256": "21e18ef8ae706c449956bcd077c11fe2e4e9bb862a63f6208fdd54c49bcf68aa",
+      "bytes": 3319
+    },
+    {
+      "path": "src/placebot/models/qwen3_235b_thinking_local.py",
+      "origin": "PlaceBot-HPC@d9328aeb86ece4a5c74cf111d30c4d6976a67987:placebot/models/qwen3_235b_thinking_local.py",
+      "sha256": "91a155dcb038e0a819922afffb67a20f7d56eb401bd7c060f93f23c90c7d7a6b",
+      "bytes": 6895
+    },
+    {
+      "path": "src/placebot/models/qwen3_14b_local.py",
+      "origin": "PlaceBot-HPC@d9328aeb86ece4a5c74cf111d30c4d6976a67987:placebot/models/qwen3_14b_local.py",
+      "sha256": "280618d7af9548854f13cdc0102f6d5b679e6b3ce44056d7ecf42901d1dac80a",
+      "bytes": 2205
+    },
+    {
+      "path": "src/placebot/models/openrouter_gemini_3_5_flash.py",
+      "origin": "PlaceBot-HPC@d9328aeb86ece4a5c74cf111d30c4d6976a67987:placebot/models/openrouter_gemini_3_5_flash.py",
+      "sha256": "f7d9168b3177d03bd9258d4f7d8120bb25a379a2b4b554afaff1b5653bc9cd0a",
+      "bytes": 807
+    },
+    {
+      "path": "src/placebot/models/gpt_oss_120b_local.py",
+      "origin": "PlaceBot-HPC@d9328aeb86ece4a5c74cf111d30c4d6976a67987:placebot/models/gpt_oss_120b_local.py",
+      "sha256": "959ecd99dd73ec142b5a569ee6f9c3d2fffd679109309fd312c541beb9db9bfe",
+      "bytes": 3904
+    },
+    {
+      "path": "src/placebot/models/qwen3_8_27b_thinking_local.py",
+      "origin": "PlaceBot-HPC@d9328aeb86ece4a5c74cf111d30c4d6976a67987:placebot/models/qwen3_8_27b_thinking_local.py",
+      "sha256": "ee1eb79019a560618a70558d93510c6058784dab9d257c7bd321fb3d4920035c",
+      "bytes": 5042
+    },
+    {
+      "path": "src/placebot/models/qwen3_1_7b_local.py",
+      "origin": "PlaceBot-HPC@d9328aeb86ece4a5c74cf111d30c4d6976a67987:placebot/models/qwen3_1_7b_local.py",
+      "sha256": "f737fd860a2b1f9438be9bc389f0bfe20d6559eb5fdbd225f28f80c3d90b7832",
+      "bytes": 2210
+    },
+    {
+      "path": "src/placebot/models/qwen3_6_35b_thinking_local.py",
+      "origin": "PlaceBot-HPC@d9328aeb86ece4a5c74cf111d30c4d6976a67987:placebot/models/qwen3_6_35b_thinking_local.py",
+      "sha256": "1a53b2fcba434428f7add1b671bc1fcb086e03ad6e13f4c3fd0517f279329cdf",
+      "bytes": 5463
+    },
+    {
+      "path": "src/placebot/models/claude_haiku_4_5.py",
+      "origin": "PlaceBot-HPC@d9328aeb86ece4a5c74cf111d30c4d6976a67987:placebot/models/claude_haiku_4_5.py",
+      "sha256": "8268e47f7f9b7605a32f896756be93a91e54df5f0d8456680a9cf71b36078d71",
+      "bytes": 2744
+    },
+    {
+      "path": "src/placebot/models/__init__.py",
+      "origin": "PlaceBot-HPC@d9328aeb86ece4a5c74cf111d30c4d6976a67987:placebot/models/__init__.py",
+      "sha256": "c2a19e0249af829b68f8089fa244e7bfc2db7769fcb5af47998969e906fca735",
+      "bytes": 335
+    },
+    {
+      "path": "src/placebot/models/qwen3_next_80b_local.py",
+      "origin": "PlaceBot-HPC@d9328aeb86ece4a5c74cf111d30c4d6976a67987:placebot/models/qwen3_next_80b_local.py",
+      "sha256": "47d84fb0a9d72f4bdf6cc0f484756a534f869f910900e978a190e3d91e33013e",
+      "bytes": 3238
+    },
+    {
+      "path": "src/placebot/models/openrouter_claude_opus_4_8.py",
+      "origin": "PlaceBot-HPC@d9328aeb86ece4a5c74cf111d30c4d6976a67987:placebot/models/openrouter_claude_opus_4_8.py",
+      "sha256": "e84ce9f9e4d277339a89be655ecc5d302746a0b6aedcf2f3ffd4e5201d31ba11",
+      "bytes": 810
+    },
+    {
+      "path": "src/placebot/models/gpt_5.py",
+      "origin": "PlaceBot-HPC@d9328aeb86ece4a5c74cf111d30c4d6976a67987:placebot/models/gpt_5.py",
+      "sha256": "49ff98aeb704cb3f604bda76ff9f15c1d30244cc41c9e952b4c928b9ad286d07",
+      "bytes": 3184
+    },
+    {
+      "path": "src/placebot/models/__openrouter_common.py",
+      "origin": "PlaceBot-HPC@d9328aeb86ece4a5c74cf111d30c4d6976a67987:placebot/models/__openrouter_common.py",
+      "sha256": "5f84f42742854ed5a2c7e296200fbce7a466f844aa3f195068edf82c6fa2f9a7",
+      "bytes": 1410
+    },
+    {
+      "path": "src/placebot/models/claude_sonnet_4_6.py",
+      "origin": "PlaceBot-HPC@d9328aeb86ece4a5c74cf111d30c4d6976a67987:placebot/models/claude_sonnet_4_6.py",
+      "sha256": "9610026a5585f6556629211d7ef92ea119d07c8ce69207a09d14a42a5c1bbf1b",
+      "bytes": 2314
+    },
+    {
+      "path": "src/placebot/models/qwen3_next_80b_thinking_local.py",
+      "origin": "PlaceBot-HPC@d9328aeb86ece4a5c74cf111d30c4d6976a67987:placebot/models/qwen3_next_80b_thinking_local.py",
+      "sha256": "dc833ecab9762839a1cf421b492920124c27dc3b89c7bd156e6ec30cd41aadda",
+      "bytes": 5279
+    },
+    {
+      "path": "src/placebot/models/gemini_3_5_flash.py",
+      "origin": "PlaceBot-HPC@d9328aeb86ece4a5c74cf111d30c4d6976a67987:placebot/models/gemini_3_5_flash.py",
+      "sha256": "7c380b0f11430a4eaa9dc2f613ef89e2d15893154de4ffd0d2263ed70a36c928",
+      "bytes": 2886
+    },
+    {
+      "path": "src/placebot/models/openrouter_claude_haiku_4_5.py",
+      "origin": "PlaceBot-HPC@d9328aeb86ece4a5c74cf111d30c4d6976a67987:placebot/models/openrouter_claude_haiku_4_5.py",
+      "sha256": "ede69478faf02958410d7a2ddc7f0cd4b8d18da98bf5606c408050b8f04fbe1e",
+      "bytes": 809
+    },
+    {
+      "path": "src/placebot/models/openrouter_gpt_5_mini.py",
+      "origin": "PlaceBot-HPC@d9328aeb86ece4a5c74cf111d30c4d6976a67987:placebot/models/openrouter_gpt_5_mini.py",
+      "sha256": "b40b6094b630ba1a9d7c7b43a7772052aecab5363115bc27fbecaf669aac651f",
+      "bytes": 803
+    },
+    {
+      "path": "src/placebot/models/gpt_4_1_mini.py",
+      "origin": "PlaceBot-HPC@d9328aeb86ece4a5c74cf111d30c4d6976a67987:placebot/models/gpt_4_1_mini.py",
+      "sha256": "91e35b1ad9982e8b5c6ff0b7dc412393991d219ce3aefd42af1a9246ba6c7bb6",
+      "bytes": 3217
+    },
+    {
+      "path": "src/placebot/models/claude_opus_4_8.py",
+      "origin": "PlaceBot-HPC@d9328aeb86ece4a5c74cf111d30c4d6976a67987:placebot/models/claude_opus_4_8.py",
+      "sha256": "a031c73f033e6135eea9632629405ed732c2ce64c0d55649b198a4810e967e20",
+      "bytes": 2449
+    },
+    {
+      "path": "src/placebot/models/gpt_5_mini.py",
+      "origin": "PlaceBot-HPC@d9328aeb86ece4a5c74cf111d30c4d6976a67987:placebot/models/gpt_5_mini.py",
+      "sha256": "8a0e6a2258803336e22d25582a2f7f559018b3e4cf9615feeced72f8a233d8ae",
+      "bytes": 3187
+    },
+    {
+      "path": "src/placebot/models/qwen3_8b_local.py",
+      "origin": "PlaceBot-HPC@d9328aeb86ece4a5c74cf111d30c4d6976a67987:placebot/models/qwen3_8b_local.py",
+      "sha256": "03ce5544948d3ac5b032da19e6621f8f9483a2194a25adf576d98f7c85f3b825",
+      "bytes": 2197
+    },
+    {
+      "path": "src/placebot/models/openrouter_gpt_4_1.py",
+      "origin": "PlaceBot-HPC@d9328aeb86ece4a5c74cf111d30c4d6976a67987:placebot/models/openrouter_gpt_4_1.py",
+      "sha256": "a5182f0ed90c36b39cf8cbc1256e1d974c210c4ceafcc3375a0cd5df58248de3",
+      "bytes": 779
+    },
+    {
+      "path": "src/placebot/models/nemotron_3_super_local.py",
+      "origin": "PlaceBot-HPC@d9328aeb86ece4a5c74cf111d30c4d6976a67987:placebot/models/nemotron_3_super_local.py",
+      "sha256": "32e311fd01c47d12e9c0a8e06e7b6eb20e030d0eec1a19ab567c79a96c706f38",
+      "bytes": 15567
+    },
+    {
+      "path": "src/placebot/core/cost_estimator.py",
+      "origin": "PlaceBot-HPC@d9328aeb86ece4a5c74cf111d30c4d6976a67987:placebot/core/cost_estimator.py",
+      "sha256": "0be5b0f536d4f43362319936808562c1db3c963b4738fe1518fae42935fe83e9",
+      "bytes": 4972
+    },
+    {
+      "path": "src/placebot/core/benchmarking.py",
+      "origin": "PlaceBot-HPC@d9328aeb86ece4a5c74cf111d30c4d6976a67987:placebot/core/benchmarking.py",
+      "sha256": "6e1ac6ea081c8f36d30382669abe1076d9a949deeedb7b2c812a1e4fe8738c4c",
+      "bytes": 29655
+    },
+    {
+      "path": "src/placebot/core/model_selector.py",
+      "origin": "PlaceBot-HPC@d9328aeb86ece4a5c74cf111d30c4d6976a67987:placebot/core/model_selector.py",
+      "sha256": "e3d6f2bdd403d76287c7efa0217f045084293b2f2a8fe64b7e7f116b1367df5a",
+      "bytes": 21075
+    },
+    {
+      "path": "src/placebot/core/deduplication.py",
+      "origin": "PlaceBot-HPC@d9328aeb86ece4a5c74cf111d30c4d6976a67987:placebot/core/deduplication.py",
+      "sha256": "d7a530668f8e9e86c763172b8ae5113ccc26083658490ace108437807c712875",
+      "bytes": 7154
+    },
+    {
+      "path": "src/placebot/core/__init__.py",
+      "origin": "PlaceBot-HPC@d9328aeb86ece4a5c74cf111d30c4d6976a67987:placebot/core/__init__.py",
+      "sha256": "8a62369e1bbf1a035a2d286b8d5870182ad193dd685b5c7d1f3da92e3b958cf0",
+      "bytes": 319
+    },
+    {
+      "path": "src/placebot/core/async_batch_processor.py",
+      "origin": "PlaceBot-HPC@d9328aeb86ece4a5c74cf111d30c4d6976a67987:placebot/core/async_batch_processor.py",
+      "sha256": "6dc6a09de5ddd89ac78206a7658e87add5901eb6308a14a5f945418fc7d99aaf",
+      "bytes": 57511
+    },
+    {
+      "path": "src/placebot/core/ai_processor.py",
+      "origin": "GB300 saved export:reproducibility/runtime/placebot/core/ai_processor.py",
+      "sha256": "4688d02ada15fb96d70efb55c218f2578955416acd5a0b1250c9e80fe5f58b75",
+      "bytes": 36361,
+      "previous_snapshot_sha256": "8f636675336d342d32da17a52a46f6809c099d50b05a4ece2332827ee309de5e"
+    },
+    {
+      "path": "src/placebot/core/resume_utils.py",
+      "origin": "PlaceBot-HPC@d9328aeb86ece4a5c74cf111d30c4d6976a67987:placebot/core/resume_utils.py",
+      "sha256": "0efc9ed23fce4dd7a5a9030c75a70a0c53d4f91a24881977396528a59d584c2e",
+      "bytes": 4677
+    },
+    {
+      "path": "src/placebot/core/config.py",
+      "origin": "PlaceBot-HPC@d9328aeb86ece4a5c74cf111d30c4d6976a67987:placebot/core/config.py",
+      "sha256": "449a1826e3b309740a1be9fc31c025b168f2e7c5a5757e3afc1b841cfc29753c",
+      "bytes": 9641
+    },
+    {
+      "path": "src/placebot/core/adaptive_reasoning.py",
+      "origin": "PlaceBot-HPC@d9328aeb86ece4a5c74cf111d30c4d6976a67987:placebot/core/adaptive_reasoning.py",
+      "sha256": "3d679c004408a0855774f2c72af4c85e6c821b3675245e5866cd2f32308c4d4c",
+      "bytes": 20705
+    },
+    {
+      "path": "src/placebot/core/model_comparison.py",
+      "origin": "PlaceBot-HPC@d9328aeb86ece4a5c74cf111d30c4d6976a67987:placebot/core/model_comparison.py",
+      "sha256": "22beb0ef522aaa30bc78e7262c2bc26d74de8f2a8b52b8e70ce83a90f8674a9f",
+      "bytes": 5339
+    },
+    {
+      "path": "src/placebot/core/dataset_preview.py",
+      "origin": "PlaceBot-HPC@d9328aeb86ece4a5c74cf111d30c4d6976a67987:placebot/core/dataset_preview.py",
+      "sha256": "a288a478ccc659458718ee14586d11cc060f57d5d0fc300b14d5291f7034d76c",
+      "bytes": 5096
+    },
+    {
+      "path": "src/placebot/core/file_manager.py",
+      "origin": "PlaceBot-HPC@d9328aeb86ece4a5c74cf111d30c4d6976a67987:placebot/core/file_manager.py",
+      "sha256": "fc9016940aa3b8085cafbf2ea6d67e39b2e92168397245a7d9fa21bde200e033",
+      "bytes": 15679
+    },
+    {
+      "path": "src/placebot/core/field_mapping.py",
+      "origin": "PlaceBot-HPC@d9328aeb86ece4a5c74cf111d30c4d6976a67987:placebot/core/field_mapping.py",
+      "sha256": "3923da475d184741effcc65e0fc90eda782a2858cb7209217aaa27a090cf4eee",
+      "bytes": 10120
+    },
+    {
+      "path": "src/placebot/core/ensemble_analysis.py",
+      "origin": "PlaceBot-HPC@d9328aeb86ece4a5c74cf111d30c4d6976a67987:placebot/core/ensemble_analysis.py",
+      "sha256": "d228b09db0759b747ee9876c83effc4baa0fe16da13a1e3e488aa7270605a424",
+      "bytes": 12573
+    },
+    {
+      "path": "src/placebot/core/output_formatter.py",
+      "origin": "PlaceBot-HPC@d9328aeb86ece4a5c74cf111d30c4d6976a67987:placebot/core/output_formatter.py",
+      "sha256": "ba0fc007988133b8c8bb7a2588eaf38a6c0962dc39ec79bfa46d3e44a3bb6496",
+      "bytes": 13982
+    },
+    {
+      "path": "src/placebot/core/coordinate_utils.py",
+      "origin": "GB300 saved export:reproducibility/runtime/placebot/core/coordinate_utils.py",
+      "sha256": "f598466167e5dc8696b716b8c316546fc0545f9e15875c9012177a4964239baa",
+      "bytes": 13904,
+      "previous_snapshot_sha256": "4a48881964e09491b1a57556205a818cd2411814e82023c88bc2730b4122d311"
+    },
+    {
+      "path": "src/placebot/core/data_dirs.py",
+      "origin": "PlaceBot-HPC@d9328aeb86ece4a5c74cf111d30c4d6976a67987:placebot/core/data_dirs.py",
+      "sha256": "d99b9670c2bda91c18cfa79825ecbe783b1036fa35060e1c2d39c7775f6a9629",
+      "bytes": 3361
+    },
+    {
+      "path": "src/placebot/core/batch_processor.py",
+      "origin": "PlaceBot-HPC@d9328aeb86ece4a5c74cf111d30c4d6976a67987:placebot/core/batch_processor.py",
+      "sha256": "6397774623817f50bc0b92f265d7f3439f68ac5bdacf952388f299d7da3225d3",
+      "bytes": 15920
+    },
+    {
+      "path": "src/placebot/core/gemini_batch.py",
+      "origin": "PlaceBot-HPC@d9328aeb86ece4a5c74cf111d30c4d6976a67987:placebot/core/gemini_batch.py",
+      "sha256": "f773a75fdf42a45cacc85ef314962a01c44c2e92d59218532442a637250e4fcc",
+      "bytes": 8369
+    },
+    {
+      "path": "src/placebot/gui/app.py",
+      "origin": "PlaceBot-HPC@d9328aeb86ece4a5c74cf111d30c4d6976a67987:placebot/gui/app.py",
+      "sha256": "321ac0d208d9c7c6683012881afa392c88150eed97acf57bf7f60e1ccc918297",
+      "bytes": 66222
+    },
+    {
+      "path": "src/placebot/gui/launcher.py",
+      "origin": "PlaceBot-HPC@d9328aeb86ece4a5c74cf111d30c4d6976a67987:placebot/gui/launcher.py",
+      "sha256": "29adde3a8bcb2706a17f2f8f71544040dd8dabe8067e6e06e732b5df5ea5019b",
+      "bytes": 2957
+    },
+    {
+      "path": "src/placebot/gui/__init__.py",
+      "origin": "PlaceBot-HPC@d9328aeb86ece4a5c74cf111d30c4d6976a67987:placebot/gui/__init__.py",
+      "sha256": "4004e4cc2f842b34eced8195a922290d49d1bf1a2721a4a9f404b882d8571c64",
+      "bytes": 53
+    },
+    {
+      "path": "src/placebot/data/__init__.py",
+      "origin": "PlaceBot-HPC@d9328aeb86ece4a5c74cf111d30c4d6976a67987:placebot/data/__init__.py",
+      "sha256": "e9f7bb098be12417605858aa68e2dd1049f65d743fdaa67a7702b31a5d1f9d58",
+      "bytes": 126
+    },
+    {
+      "path": "src/placebot/cli/batch_download_staggered.py",
+      "origin": "PlaceBot-HPC@d9328aeb86ece4a5c74cf111d30c4d6976a67987:placebot/cli/batch_download_staggered.py",
+      "sha256": "bd1858ba6fae35450f00b70ef87714020f61be3e94cfddf6500a3590b8161158",
+      "bytes": 8476
+    },
+    {
+      "path": "src/placebot/cli/hpc.py",
+      "origin": "GB300 saved export:reproducibility/runtime/placebot/cli/hpc.py",
+      "sha256": "518ffaac2a3275bd8292bb3ae44bcd5e4fda8c8d72d2a78679aa18ce5e4c8fbc",
+      "bytes": 81012,
+      "previous_snapshot_sha256": "1841c3a57c2e80f536c938fb244649dd45b8b1de279c805b89cd11fd7fc188d7"
+    },
+    {
+      "path": "src/placebot/cli/ensemble.py",
+      "origin": "PlaceBot-HPC@d9328aeb86ece4a5c74cf111d30c4d6976a67987:placebot/cli/ensemble.py",
+      "sha256": "ee26c9286ef1f76eaa947e8994f27220d756f7086496268160b861a990923ea8",
+      "bytes": 6973
+    },
+    {
+      "path": "src/placebot/cli/batch_download.py",
+      "origin": "PlaceBot-HPC@d9328aeb86ece4a5c74cf111d30c4d6976a67987:placebot/cli/batch_download.py",
+      "sha256": "12f0498e45e70615ef2afbab323454e30517ca3d0a56d1033394582eaf7175ec",
+      "bytes": 5313
+    },
+    {
+      "path": "src/placebot/cli/batch_status.py",
+      "origin": "PlaceBot-HPC@d9328aeb86ece4a5c74cf111d30c4d6976a67987:placebot/cli/batch_status.py",
+      "sha256": "f750dcccb324bc9216b1a85abdf1ca208d06a68ba881a5c35a26439a568fafe8",
+      "bytes": 5702
+    },
+    {
+      "path": "src/placebot/cli/__init__.py",
+      "origin": "PlaceBot-HPC@d9328aeb86ece4a5c74cf111d30c4d6976a67987:placebot/cli/__init__.py",
+      "sha256": "2233551075154d27d23823509f4a2b7ddaa1259181daa688745687eecb8fa586",
+      "bytes": 84
+    },
+    {
+      "path": "src/placebot/cli/user_interface.py",
+      "origin": "PlaceBot-HPC@d9328aeb86ece4a5c74cf111d30c4d6976a67987:placebot/cli/user_interface.py",
+      "sha256": "f9eb1559478f519844b8c466a5fd18f015121a943d2eaf3738deae4df9624dbf",
+      "bytes": 19112
+    },
+    {
+      "path": "src/placebot/cli/prep.py",
+      "origin": "PlaceBot-HPC@d9328aeb86ece4a5c74cf111d30c4d6976a67987:placebot/cli/prep.py",
+      "sha256": "0e4d1b7670ad116574186e2639dfb354787356fd031b8992d89b375ba15058f6",
+      "bytes": 8889
+    },
+    {
+      "path": "src/placebot/cli/main.py",
+      "origin": "PlaceBot-HPC@d9328aeb86ece4a5c74cf111d30c4d6976a67987:placebot/cli/main.py",
+      "sha256": "cb8a83732d72e9e4122abfcf9cb6bb50d461fbf7b14935c91be45c262615a401",
+      "bytes": 22426
+    },
+    {
+      "path": "src/placebot/cli/batch_manager.py",
+      "origin": "PlaceBot-HPC@d9328aeb86ece4a5c74cf111d30c4d6976a67987:placebot/cli/batch_manager.py",
+      "sha256": "5432595dc56b26c870b5ec65dd1e04e2cf175c93b3eb4e90cb5145bd088d4ee8",
+      "bytes": 13360
+    },
+    {
+      "path": "src/placebot/cli/runtime_report.py",
+      "origin": "PlaceBot-HPC@d9328aeb86ece4a5c74cf111d30c4d6976a67987:placebot/cli/runtime_report.py",
+      "sha256": "3afa514221179f24c5a59422eaae90304b65cc27418ee06aab5d16c02ef49bc4",
+      "bytes": 14861
+    },
+    {
+      "path": "src/placebot/cli/batch_status_staggered.py",
+      "origin": "PlaceBot-HPC@d9328aeb86ece4a5c74cf111d30c4d6976a67987:placebot/cli/batch_status_staggered.py",
+      "sha256": "40da6d047b456463bcc58a875f8bdf81365071767349dab7642c1a5f3769d10f",
+      "bytes": 5575
+    },
+    {
+      "path": "src/placebot/cli/benchmark.py",
+      "origin": "PlaceBot-HPC@d9328aeb86ece4a5c74cf111d30c4d6976a67987:placebot/cli/benchmark.py",
+      "sha256": "0442a22d5dd5d6a4396acd3e40331cc8681088f3263b9197b4301662e5249bd3",
+      "bytes": 28205
+    },
+    {
+      "path": "src/placebot/LICENSE",
+      "origin": "PlaceBot-HPC@d9328aeb86ece4a5c74cf111d30c4d6976a67987:LICENSE",
+      "sha256": "2203e76c4ca79178cc0d05f037ec54a16cab87072afb3ddb4a60a91c3ab798e0",
+      "bytes": 1078
+    },
+    {
+      "path": "archive/gb10-services/tdwg-ebib-peer-overnight-v1-stop.timer",
+      "origin": "tdwg-gb10-data-transformer/scripts/tdwg-ebib-peer-overnight-v1-stop.timer",
+      "sha256": "d5dc83ecf82ce96c27a088324570827bbdcd8d9221ed5081f6f7743eb9b52bd5",
+      "bytes": 270
+    },
+    {
+      "path": "archive/gb10-services/tdwg-ebib-peer-overnight-v1-stop.service",
+      "origin": "tdwg-gb10-data-transformer/scripts/tdwg-ebib-peer-overnight-v1-stop.service",
+      "sha256": "71992051895d4ca41f493cee10a67e912c7176cb885b4b7d5ffe7830114f6feb",
+      "bytes": 200
+    },
+    {
+      "path": "archive/gb10-services/tdwg-ebib-peer-overnight-v1.service",
+      "origin": "tdwg-gb10-data-transformer/scripts/tdwg-ebib-peer-overnight-v1.service",
+      "sha256": "db7ce43806f7c2351dab63afe58e57599ae9a230b05e1e54ac152b0c96bb208d",
+      "bytes": 643,
+      "original_sha256": "5ad2c8ec8fa50a535c954ca7bd64329e674723b4144f7ba70e47776c2d2d85c3",
+      "publication_change": "Replaced workstation paths, network addresses and account-specific defaults with portable paths or configuration."
+    },
+    {
+      "path": "src/placebot/data/prompt.md",
+      "origin": "PlaceBot-HPC@d9328aeb86ece4a5c74cf111d30c4d6976a67987:placebot/data/prompt.md",
+      "sha256": "820b8a3cfd426f592cd1dfacbc037a1131e8bbe28bb0d373cfc07f98ab23388f",
+      "bytes": 19215
+    },
+    {
+      "path": "scripts/gb300/gb300_experiment_control.py",
+      "origin": "GB300 saved export:reproducibility/runtime/research/scripts/gb300_experiment_control.py",
+      "sha256": "219081e28fd2e4c09abe55106a65132776eb521cba73ab3797068af1dd20fbb2",
+      "bytes": 32111
+    },
+    {
+      "path": "scripts/gb300/gb300_experiment_control_v2.py",
+      "origin": "GB300 saved export:reproducibility/operations/v4/gb300_experiment_control_v2.py",
+      "sha256": "b6e454774a69c707a18f6db1b408c815b187567cb74dbd8fda464ddaaba642d6",
+      "bytes": 47653
+    },
+    {
+      "path": "scripts/gb300/report_gb300_experiment_window.py",
+      "origin": "GB300 saved export:reproducibility/operations/v4/report_gb300_experiment_window.py",
+      "sha256": "712a0271af430cd2ad96e561b2f894bfbc54a50b73e2ca2b376feedf3fc226c4",
+      "bytes": 37240
+    },
+    {
+      "path": "scripts/gb300/monitor_gb300_experiment.py",
+      "origin": "GB300 saved export:reproducibility/operations/v3/monitor_gb300_experiment.py",
+      "sha256": "8556296da2f41ce65e739177f5bd9fb3339826f89b8d6bede01f65d7e6bef08f",
+      "bytes": 21567
+    },
+    {
+      "path": "tests/gb300/test_gb300_experiment_control.py",
+      "origin": "GB300 saved export:reproducibility/PlaceBot-HPC/research/tests/test_gb300_experiment_control.py",
+      "sha256": "db851815041957832a9571d3883e5d2c189aec116ea3ef03b70b56193fc49f33",
+      "bytes": 9743,
+      "original_sha256": "554a2ad9101871e457df3a67f6d3623ca633d26df7e2a4437b76965faf2d459b",
+      "publication_change": "Adjusted test import paths for the repository layout."
+    },
+    {
+      "path": "tests/gb300/test_gb300_experiment_control_v2.py",
+      "origin": "GB300 saved export:reproducibility/PlaceBot-HPC/research/tests/test_gb300_experiment_control_v2.py",
+      "sha256": "3e5cd984a41e89b68bffba3e173c7ccbabb11daa4761f433bacb273399eaef24",
+      "bytes": 14058,
+      "original_sha256": "f684915a49ae641f62b4e6fa5ae8c10d91c47e98bd5b09fab328e372f0370904",
+      "publication_change": "Adjusted test import paths for the repository layout."
+    },
+    {
+      "path": "tests/gb300/test_report_gb300_experiment_window.py",
+      "origin": "GB300 saved export:reproducibility/PlaceBot-HPC/research/tests/test_report_gb300_experiment_window.py",
+      "sha256": "2caac9532f0e1581f53ee880ab08d4894c9bf459d960d55042caa39eaa25da2b",
+      "bytes": 19349,
+      "original_sha256": "c9523e58badcf1ab2aef2d7c67c26d54f7af3e215fb2658be1c7defc5b58c8bd",
+      "publication_change": "Adjusted test import paths for the repository layout."
+    },
+    {
+      "path": "scripts/gb300/prepare_gb300_combined_experiment.py",
+      "origin": "GB300 saved export:reproducibility/PlaceBot-HPC/research/scripts/prepare_gb300_combined_experiment.py",
+      "sha256": "856fdde15eefb73330824bbb953d3e22ffeb6c5b4c785df4e1dbd98379723567",
+      "bytes": 6908
+    },
+    {
+      "path": "tests/gb300/test_prepare_gb300_combined_experiment.py",
+      "origin": "GB300 saved export:reproducibility/PlaceBot-HPC/research/tests/test_prepare_gb300_combined_experiment.py",
+      "sha256": "8935a9b4b46fc305f48e9138c4020aca731b54c51b42b7cf4938270f243f0293",
+      "bytes": 2506,
+      "original_sha256": "eca2b01eeb6cd749980f79f9ef942d88bacabad98416808e9947aec26ff411f4",
+      "publication_change": "Adjusted test import paths for the repository layout."
+    },
+    {
+      "path": "scripts/gb300/stage_gb300_gbif.py",
+      "origin": "GB300 saved export:reproducibility/PlaceBot-HPC/research/scripts/stage_gb300_gbif.py",
+      "sha256": "1a0b56e311336d55c090e557174ccc93b66ecb0d7ef2dcb628b596bfbdc79417",
+      "bytes": 13873
+    },
+    {
+      "path": "tests/gb300/test_stage_gb300_gbif.py",
+      "origin": "GB300 saved export:reproducibility/PlaceBot-HPC/research/tests/test_stage_gb300_gbif.py",
+      "sha256": "8d49881bc96026a85b1b6b10f87e4f0dc2fd78d2b0f46b8b836ab9faa033425d",
+      "bytes": 2638,
+      "original_sha256": "791f8024fa4d6560193a8e66a53ebd36c07baa3a04e562aea23e3d56317c6b8c",
+      "publication_change": "Adjusted test import paths for the repository layout."
+    },
+    {
+      "path": "scripts/gb300/audit_gb300_placebot_eligibility.py",
+      "origin": "GB300 saved export:reproducibility/PlaceBot-HPC/research/scripts/audit_gb300_placebot_eligibility.py",
+      "sha256": "dffa65628e7e07fa81d21ed1f69225cd5dc65d718ef5114582d052229ab0ac10",
+      "bytes": 6220
+    },
+    {
+      "path": "scripts/gb300/gbif_locality_memory.py",
+      "origin": "GB300 saved export:reproducibility/PlaceBot-HPC/research/scripts/gbif_locality_memory.py",
+      "sha256": "43a4080057eb3ca75adf5d2e7d37ff3ec4025755f524308a635c5cd6f8ee834a",
+      "bytes": 34785
+    },
+    {
+      "path": "tests/gb300/test_gbif_locality_memory.py",
+      "origin": "GB300 saved export:reproducibility/PlaceBot-HPC/research/tests/test_gbif_locality_memory.py",
+      "sha256": "45e456d50764effadf8209ccc2d06c6c562efcab8280c0f023b8684c2a002e10",
+      "bytes": 26236,
+      "original_sha256": "d5db9c36e8dd67832a71d0c92cfc4c50b1dfde3a668d7c3ee16ab297098ef5d0",
+      "publication_change": "Adjusted test import paths for the repository layout."
+    },
+    {
+      "path": "scripts/gb300/download_dissco_uk_snapshot.py",
+      "origin": "GB300 saved export:reproducibility/PlaceBot-HPC/research/scripts/download_dissco_uk_snapshot.py",
+      "sha256": "ed939e586ba5c85972c72bfdae92013f75faad83ccad43f491fd757e79677329",
+      "bytes": 12437,
+      "original_sha256": "1db6efac3fbd26323bd475b52020a4331fe6dc8bfe5fd9112fa77ee6a4b77a9a",
+      "publication_change": "Replaced workstation paths, network addresses and account-specific defaults with portable paths or configuration."
+    },
+    {
+      "path": "tests/gb300/test_download_dissco_uk_snapshot.py",
+      "origin": "GB300 saved export:reproducibility/PlaceBot-HPC/research/tests/test_download_dissco_uk_snapshot.py",
+      "sha256": "2c935b222630337ee289d38713882128da8d5da34f1b46b5ee0302a7729b4710",
+      "bytes": 1109,
+      "original_sha256": "9e5b781baf54862c53447bb2e501663d1e8b940d5e06f0a9f7ca6e395d6bba34",
+      "publication_change": "Updated test imports and archived timer paths for the repository layout."
+    },
+    {
+      "path": "scripts/gb300/analyze_dissco_uk_snapshot.py",
+      "origin": "GB300 saved export:reproducibility/PlaceBot-HPC/research/scripts/analyze_dissco_uk_snapshot.py",
+      "sha256": "1708e595b73587eff53a715a9a9215f4f52db792c00b315837b8413b9ae87dfe",
+      "bytes": 41416,
+      "original_sha256": "9815b96071f67c25607e1a20dac5c2e7ea61f99663213edd34e40143c0d832a0",
+      "publication_change": "Replaced workstation paths, network addresses and account-specific defaults with portable paths or configuration."
+    },
+    {
+      "path": "tests/gb300/test_analyze_dissco_uk_snapshot.py",
+      "origin": "GB300 saved export:reproducibility/PlaceBot-HPC/research/tests/test_analyze_dissco_uk_snapshot.py",
+      "sha256": "ba839de2736063e10bd1b78101d924c7a249590d0298b7f6e0e8bf4a79eeaf20",
+      "bytes": 4424,
+      "original_sha256": "f1053a75613ca2ef156389e9ed4faff76672e5b5b59115226d0f9f759efc8c83",
+      "publication_change": "Updated test imports and archived timer paths for the repository layout."
+    },
+    {
+      "path": "scripts/gb300/build_benchmark_holdout_manifest.py",
+      "origin": "GB300 saved export:reproducibility/PlaceBot-HPC/research/scripts/build_benchmark_holdout_manifest.py",
+      "sha256": "442e6961e951f48018d9497e3538fea57fd11a37b5cc31628facd9127016ec2b",
+      "bytes": 22557
+    },
+    {
+      "path": "tests/gb300/test_build_benchmark_holdout_manifest.py",
+      "origin": "GB300 saved export:reproducibility/PlaceBot-HPC/research/tests/test_build_benchmark_holdout_manifest.py",
+      "sha256": "dc1d8c867e15152a825d2ede6552398d9e41315ea2093b79fec0b77624132cb4",
+      "bytes": 13437,
+      "original_sha256": "240b63ffcc44992c559ded3d83ea3227ebb5816075b7e3b069ae5ca9a0ba005e",
+      "publication_change": "Updated test imports and archived timer paths for the repository layout."
+    },
+    {
+      "path": "scripts/gb300/nhm_locality_evidence.py",
+      "origin": "GB300 saved export:reproducibility/PlaceBot-HPC/research/scripts/nhm_locality_evidence.py",
+      "sha256": "da21abc91f6842c351dbe7035e711c4f4b4ea87d9b91e51352265205824760ab",
+      "bytes": 75737,
+      "original_sha256": "773476e15ea0b0a1713b81460eda2e6fa0b68fd5245ba5659454be7708f1c2af",
+      "publication_change": "Replaced workstation paths, network addresses and account-specific defaults with portable paths or configuration."
+    },
+    {
+      "path": "tests/gb300/test_nhm_locality_evidence.py",
+      "origin": "GB300 saved export:reproducibility/PlaceBot-HPC/research/tests/test_nhm_locality_evidence.py",
+      "sha256": "9ba9f4d019bae5141c2fbb254ac2ce5f680619af85405717ff612d749f0705b8",
+      "bytes": 10321,
+      "original_sha256": "13df431ac7ce8591e3707e62e768e2107c7c77b84ffe72d604c20d2d5c4e7981",
+      "publication_change": "Updated test imports and archived timer paths for the repository layout."
+    }
+  ],
+  "excluded": "Museum source rows, record-bearing prompts/responses, protected evaluation records, model weights, credentials, generated runs, workspace planning and private machine-specific serving configuration.",
+  "gb300_export_source": "Saved September 2026 runtime and operations v4; source data excluded.",
+  "layout_updated": "2026-10-30"
+}

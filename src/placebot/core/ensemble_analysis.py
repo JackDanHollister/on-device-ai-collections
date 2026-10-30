@@ -1,0 +1,330 @@
+#!/usr/bin/env python3
+"""
+Ensemble Analysis
+=================
+
+Compare the coordinate estimates from two PlaceBot runs (typically the same
+dataset processed by two different LLMs) and flag records for manual
+verification based on how far apart the two estimates are.
+
+Records are merged on their record identifier (Barcode / occurrenceID /
+gbifID / ...). For each record the great-circle (haversine) distance between the
+two models' coordinates is computed and bucketed into an agreement category:
+
+    close (<2km)  ·  moderate (2-5km)  ·  low (5-10km)  ·  none (>10km)
+
+Records where either coordinate is missing/invalid, or whose identifier only
+appears in one file, fall into "no comparison".
+
+Output column order: every column from the primary file first (in its original
+order), then the secondary file's *processed* columns prefixed with
+``Secondary_`` (the shared original input columns are skipped so they aren't
+duplicated), then ``Agreement_Category`` and finally ``Distance_km``.
+
+Both the CLI (``placebot-ensemble``) and the GUI call :func:`run_ensemble`.
+"""
+
+import csv
+import json
+import os
+from collections import OrderedDict
+from typing import Any, Dict, List, Optional
+
+import numpy as np
+
+from placebot.core.coordinate_utils import validate_coordinates
+from placebot.core.field_mapping import IDENTIFIER_FIELDS
+from placebot.core.output_formatter import PLACEBOT_OUTPUT_COLUMNS
+
+
+# ---------------------------------------------------------------------------
+# Agreement categories
+# ---------------------------------------------------------------------------
+
+CATEGORY_CLOSE = "close (<2km)"
+CATEGORY_MODERATE = "moderate (2-5km)"
+CATEGORY_LOW = "low (5-10km)"
+CATEGORY_NONE = "none (>10km)"
+CATEGORY_NO_COMPARISON = "no comparison"
+
+# Ordered so summaries always list every bucket (including zero counts).
+CATEGORIES = [
+    CATEGORY_CLOSE,
+    CATEGORY_MODERATE,
+    CATEGORY_LOW,
+    CATEGORY_NONE,
+    CATEGORY_NO_COMPARISON,
+]
+
+# The secondary file's columns are carried forward under this prefix (all of
+# them except the original input columns, which are shared with the primary and
+# so would only be duplicates).
+SECONDARY_PREFIX = "Secondary_"
+
+# Columns appended to each carried-forward record, after the prefixed secondary
+# block. ``Agreement_Category`` then ``Distance_km`` are always the last two.
+AGREEMENT_COLUMN = "Agreement_Category"
+DISTANCE_COLUMN = "Distance_km"
+SECONDARY_LAT_COLUMN = SECONDARY_PREFIX + "Latitude"
+SECONDARY_LON_COLUMN = SECONDARY_PREFIX + "Longitude"
+
+
+# ---------------------------------------------------------------------------
+# Haversine
+# ---------------------------------------------------------------------------
+
+def haversine_distance(lat1, lon1, lat2, lon2):
+    """Great-circle distance in km between two points (decimal degrees).
+
+    Works on scalars or array-likes. Mirrors the reference implementation in
+    ``compare_model_coordinates.py``.
+    """
+    R = 6371.0  # Earth radius in km
+    lat1, lon1, lat2, lon2 = map(np.radians, [lat1, lon1, lat2, lon2])
+    dlat = lat2 - lat1
+    dlon = lon2 - lon1
+    a = np.sin(dlat / 2) ** 2 + np.cos(lat1) * np.cos(lat2) * np.sin(dlon / 2) ** 2
+    return R * 2 * np.arcsin(np.sqrt(a))
+
+
+def categorise(distance_km: Optional[float]) -> str:
+    """Map a distance in km to an agreement category."""
+    if distance_km is None:
+        return CATEGORY_NO_COMPARISON
+    if distance_km < 2:
+        return CATEGORY_CLOSE
+    if distance_km < 5:
+        return CATEGORY_MODERATE
+    if distance_km < 10:
+        return CATEGORY_LOW
+    return CATEGORY_NONE
+
+
+# ---------------------------------------------------------------------------
+# Loading
+# ---------------------------------------------------------------------------
+
+def _detect_delimiter(first_line: str) -> str:
+    """Return the most common of tab/comma/pipe/semicolon, defaulting to comma."""
+    counts = {
+        "\t": first_line.count("\t"),
+        ",": first_line.count(","),
+        "|": first_line.count("|"),
+        ";": first_line.count(";"),
+    }
+    best = max(counts, key=counts.get)
+    return best if counts[best] > 0 else ","
+
+
+def load_records(path: str) -> List[Dict[str, Any]]:
+    """Load records from a PlaceBot output file (CSV/TSV/TXT or JSON).
+
+    JSON may be a top-level list, or a dict wrapping the records under
+    ``records``/``data``, or a GeoJSON FeatureCollection (properties are
+    extracted and the geometry's coordinates folded back into
+    Latitude/Longitude).
+    """
+    ext = os.path.splitext(path)[1].lower()
+
+    if ext in (".json", ".geojson"):
+        with open(path, encoding="utf-8") as f:
+            data = json.load(f)
+        return _records_from_json(data)
+
+    # Delimited text. utf-8-sig transparently strips a BOM if present.
+    with open(path, "r", encoding="utf-8-sig", newline="") as f:
+        first_line = f.readline()
+        if not first_line.strip():
+            return []
+        delimiter = _detect_delimiter(first_line)
+        f.seek(0)
+        reader = csv.DictReader(f, delimiter=delimiter)
+        return [dict(row) for row in reader]
+
+
+def _records_from_json(data: Any) -> List[Dict[str, Any]]:
+    """Normalise a parsed JSON payload into a list of record dicts."""
+    if isinstance(data, list):
+        return [r for r in data if isinstance(r, dict)]
+
+    if isinstance(data, dict):
+        # GeoJSON FeatureCollection
+        if data.get("type") == "FeatureCollection" and isinstance(data.get("features"), list):
+            records = []
+            for feat in data["features"]:
+                if not isinstance(feat, dict):
+                    continue
+                props = dict(feat.get("properties") or {})
+                geom = feat.get("geometry") or {}
+                coords = geom.get("coordinates")
+                if isinstance(coords, (list, tuple)) and len(coords) >= 2:
+                    # GeoJSON is [lon, lat]
+                    props.setdefault("Longitude", coords[0])
+                    props.setdefault("Latitude", coords[1])
+                records.append(props)
+            return records
+        # Wrapped list
+        for key in ("records", "data", "results"):
+            if isinstance(data.get(key), list):
+                return [r for r in data[key] if isinstance(r, dict)]
+
+    return []
+
+
+# ---------------------------------------------------------------------------
+# Case-tolerant field access
+# ---------------------------------------------------------------------------
+
+def _get(record: Dict[str, Any], *names: str) -> Any:
+    """Return the first present value among ``names`` (case-insensitive fallback)."""
+    for name in names:
+        if name in record and record[name] not in (None, ""):
+            return record[name]
+    lowered = {str(k).lower(): v for k, v in record.items()}
+    for name in names:
+        val = lowered.get(name.lower())
+        if val not in (None, ""):
+            return val
+    return None
+
+
+def _record_key(record: Dict[str, Any]) -> Optional[str]:
+    """Resolve a record's match key from any standard identifier column.
+
+    Uses the same identifier fields as the rest of the pipeline
+    (``Barcode``/``catalogNumber``/``occurrenceID``/...) plus ``gbifID`` and a
+    few generic fallbacks, so GBIF and Darwin Core exports match as well as
+    native PlaceBot files. Returns ``None`` when no identifier is present (those
+    records stay in "no comparison"); it must not collapse to a shared default
+    or unrelated rows would falsely match.
+    """
+    bc = _get(record, *IDENTIFIER_FIELDS, "gbifID", "barcode", "locality_id", "id")
+    return str(bc).strip() if bc not in (None, "") else None
+
+
+# Backwards-compatible alias (older name).
+_barcode = _record_key
+
+
+def _coords(record: Dict[str, Any]):
+    lat = _get(record, "Latitude", "latitude", "lat")
+    lon = _get(record, "Longitude", "longitude", "lon", "long")
+    return validate_coordinates(lat, lon)
+
+
+def _column_order(records: List[Dict[str, Any]]) -> List[str]:
+    """Column names in the order they first appear across ``records``."""
+    seen: List[str] = []
+    seen_set = set()
+    for record in records:
+        for key in record.keys():
+            if key not in seen_set:
+                seen_set.add(key)
+                seen.append(key)
+    return seen
+
+
+# ---------------------------------------------------------------------------
+# Core comparison
+# ---------------------------------------------------------------------------
+
+def run_ensemble(primary_path: str, secondary_path: str) -> Dict[str, Any]:
+    """Compare two PlaceBot output files and build annotated output records.
+
+    Returns a dict with:
+        records           - carried-forward primary records + secondary columns
+        fieldnames        - explicit output column order (see module docstring)
+        summary           - OrderedDict[category -> count]
+        primary_name      - basename of the primary file
+        secondary_name    - basename of the secondary file
+        total             - number of output records (= primary record count)
+        only_in_primary   - records present only in the primary file
+        only_in_secondary - records present only in the secondary file
+        duplicate_barcodes- duplicate identifiers seen in the secondary file
+    """
+    primary = load_records(primary_path)
+    secondary = load_records(secondary_path)
+
+    # Index secondary by record key (keep first occurrence; count duplicates).
+    # Track the secondary file's column order as we go.
+    secondary_index: Dict[str, Dict[str, Any]] = {}
+    duplicate_barcodes = 0
+    secondary_fields = _column_order(secondary)
+    for rec in secondary:
+        bc = _record_key(rec)
+        if bc is None:
+            continue
+        if bc in secondary_index:
+            duplicate_barcodes += 1
+            continue
+        secondary_index[bc] = rec
+
+    # Primary columns (original order) lead the output; then the secondary file's
+    # processed columns (everything PlaceBot adds), prefixed. The shared original
+    # input columns are skipped so they aren't duplicated under the prefix.
+    primary_fields = _column_order(primary)
+    placebot_set = set(PLACEBOT_OUTPUT_COLUMNS)
+    secondary_carry = [col for col in secondary_fields if col in placebot_set]
+
+    matched_secondary = set()
+    output_records: List[Dict[str, Any]] = []
+    only_in_primary = 0
+
+    for rec in primary:
+        # Primary columns first, in a fixed order so every row lines up.
+        out: Dict[str, Any] = {col: rec.get(col, "") for col in primary_fields}
+        bc = _record_key(rec)
+        sec = secondary_index.get(bc) if bc is not None else None
+
+        distance = None
+        if sec is not None:
+            matched_secondary.add(bc)
+            lat1, lon1 = _coords(rec)
+            sec_lat, sec_lon = _coords(sec)
+            if None not in (lat1, lon1, sec_lat, sec_lon):
+                distance = round(float(haversine_distance(lat1, lon1, sec_lat, sec_lon)), 3)
+        else:
+            only_in_primary += 1
+
+        # Secondary processed columns (prefixed); blank when there's no match.
+        for col in secondary_carry:
+            value = sec.get(col, "") if sec is not None else ""
+            out[SECONDARY_PREFIX + col] = "" if value is None else value
+
+        out[AGREEMENT_COLUMN] = categorise(distance)
+        out[DISTANCE_COLUMN] = distance if distance is not None else ""
+        output_records.append(out)
+
+    only_in_secondary = sum(
+        1 for bc in secondary_index if bc not in matched_secondary
+    )
+
+    fieldnames = (
+        list(primary_fields)
+        + [SECONDARY_PREFIX + col for col in secondary_carry]
+        + [AGREEMENT_COLUMN, DISTANCE_COLUMN]
+    )
+
+    return {
+        "records": output_records,
+        "fieldnames": fieldnames,
+        "summary": summarise(output_records),
+        "primary_name": os.path.basename(primary_path),
+        "secondary_name": os.path.basename(secondary_path),
+        "total": len(output_records),
+        "only_in_primary": only_in_primary,
+        "only_in_secondary": only_in_secondary,
+        "duplicate_barcodes": duplicate_barcodes,
+    }
+
+
+def summarise(records: List[Dict[str, Any]]) -> "OrderedDict[str, int]":
+    """Count records per agreement category (every category present, incl. zero)."""
+    counts: "OrderedDict[str, int]" = OrderedDict((cat, 0) for cat in CATEGORIES)
+    for rec in records:
+        cat = rec.get(AGREEMENT_COLUMN, CATEGORY_NO_COMPARISON)
+        if cat in counts:
+            counts[cat] += 1
+        else:
+            counts[CATEGORY_NO_COMPARISON] += 1
+    return counts

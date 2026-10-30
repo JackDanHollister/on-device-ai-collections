@@ -1,0 +1,12 @@
+[Unit]
+Description=Absolute deadline for bibliography overnight client, 07:00 BST outer limit
+
+[Timer]
+OnCalendar=2026-09-15 05:59:00 UTC
+AccuracySec=1s
+RandomizedDelaySec=0
+Persistent=true
+Unit=tdwg-ebib-peer-overnight-v1-stop.service
+
+[Install]
+WantedBy=timers.target

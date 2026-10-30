@@ -1,0 +1,17 @@
+[Unit]
+Description=GB10 bibliography final overnight matching audit, absolute 07:00 BST limit
+StartLimitIntervalSec=300
+StartLimitBurst=3
+
+[Service]
+Type=simple
+WorkingDirectory=/path/to/gb10-workspace/runtime/20260914_ebib_peer_overnight_v1
+ExecStart=/usr/bin/python3 -B /path/to/gb10-workspace/runtime/20260914_ebib_peer_overnight_v1/run_ebib_peer_overnight.py run
+Restart=on-failure
+RestartSec=20
+RuntimeMaxSec=12h
+TimeoutStopSec=45
+KillMode=control-group
+UMask=0077
+StandardOutput=append:/path/to/gb10-workspace/work/20260914_ebib_peer_overnight_v1.log
+StandardError=append:/path/to/gb10-workspace/work/20260914_ebib_peer_overnight_v1.log
